@@ -1,0 +1,929 @@
+//MIXINS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+@mixin font($weight, $size) {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: $weight;
+    font-size: $size;
+}
+
+@mixin bgc-nav() {
+    background-color: rgb(255, 255, 255, 0.2);
+}
+
+@mixin active_btn_shadow() {
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+@mixin dot() {
+    width: 170px;
+    height: 170px;
+    background-color: #000;
+    border-radius: 50%;
+    box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin transition($time) {
+    transition: $time ease;
+}
+
+//VARS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+$color_decor:red;
+$white:#ffffff;
+$title_font_size:80px;
+$title_font_weight:700;
+$design_color:#FFCACA;
+//Значення	Назва	Опис
+//100	Thin	Дуже тонкий шрифт
+//200	Extra Light / Ultra Light	Ледь товщий за 100
+//300	Light	Легкий, тонкий
+//400	Normal / Regular	Звичайна товщина (за замовчуванням)
+//500	Medium	Трошки товщий за нормальний
+//600	Semi Bold / Demi Bold	Між 500 і жирним (700)
+//700	Bold	Жирний шрифт
+//800	Extra Bold / Ultra Bold	Дуже жирний
+//900	Black / Heavy	Максимально жирний шрифт        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    @include font(100, 24);
+    display: flex;
+    align-self: center;
+}
+
+//        @keyframes moveDecor {
+//            0% {
+//                transform: translate(0, 0);
+//            }
+//            50% {
+//                transform: translate(200px, 200px);
+//            }
+//            100% {
+//                transform: translate(0, 0);
+//            }
+//        }
+//        
+//        .decor,
+//        .decor1,
+//        .decor2,
+//        .decor3,
+//        .decor4 {
+//            animation: moveDecor 5s infinite ease-in-out;
+//        }
+.decor {
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: $color_decor;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    filter: blur(500px);
+    z-index: -1000;
+}
+
+.decor1 {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: $color_decor;
+    position: absolute;
+    left: 1300px;
+    top: 700px;
+    filter: blur(500px);
+    z-index: -1000;
+}
+
+.decor2 {
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: $color_decor;
+    position: absolute;
+    left: 50px;
+    top: 2000px;
+    filter: blur(500px);
+    z-index: -1000;
+}
+
+.decor3 {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: $color_decor;
+    position: absolute;
+    left: 1300px;
+    top: 3500px;
+    filter: blur(500px);
+    z-index: -1000;
+}
+
+.decor4 {
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: $color_decor;
+    position: absolute;
+    left: 50px;
+    top: 4500px;
+    filter: blur(500px);
+    z-index: -1000;
+}
+
+.decor5 {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: $color_decor;
+    position: absolute;
+    left: 1300px;
+    top: 5000px;
+    filter: blur(500px);
+    z-index: -1000;
+}
+
+//*************! 
+.container {
+    width: 100%;
+    max-width: 1220px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+//NAVIGATION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    @include transition(10s);
+    nav {
+        width: 100%;
+        border-radius: 40px;
+        padding: 15px 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        color: #000;
+        margin-bottom: 25px;
+        @include bgc-nav;
+        .nav_inner {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            .logo {
+                display: flex;
+                align-items: center;
+                img {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 25px;
+                    margin-right: 20px;
+                }
+                .logo_text {
+                    span {
+                        @include font(700, 35px);
+                        padding: 0;
+                        margin: 0;
+                    }
+                    p {
+                        @include font(700, 15px);
+                        padding: 0;
+                        margin: 0;
+                    }
+                }
+            }
+            .nav_links {
+                display: flex;
+                align-items: center;
+                gap: 25px;
+                .change_lang{
+                    @include font(700, 20px);
+                }
+                .change_lang:hover{
+                    color:$design_color;
+                }
+                .burger_menu {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    cursor: pointer;
+                    gap: 7px;
+                    span {
+                        height: 4px;
+                        width: 40px;
+                        background-color: #000;
+                        border-radius: 3px;
+                        @include transition(0.4s);
+                        transform-origin: center;
+                    }
+                    span:nth-child(2) {
+                        width: 45px;
+                    }
+                    span:last-child {
+                        width: 30px;
+                    }
+                }
+                //burger hover & drop animation
+                .burger_menu:hover {
+                    span:nth-child(1) {
+                        width: 45px;
+                    }
+                    span:nth-child(2) {
+                        width: 45px;
+                    }
+                    span:nth-child(3) {
+                        width: 45px;
+                    }
+                    transition: 0.2s;
+                }
+                .burger_menu.active_burger span:nth-child(1) {
+                    transform: rotate(45deg) translate(9px, 6px);
+                }
+                .burger_menu.active_burger span:nth-child(2) {
+                    opacity: 0;
+                }
+                .burger_menu.active_burger span:nth-child(3) {
+                    width: 40px;
+                    transform: rotate(-45deg) translate(9px, -6px);
+                }
+            }
+        }
+    }
+    .drop_burger_links {
+        display: none;
+        width: 0;
+    }
+    .drop_burger_links.active_drop_burger_links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: auto;
+        margin-bottom: 25px;
+        gap: 10px;
+        .drop_burger {
+            text-decoration: none;
+            color: #000;
+            @include font(500, 20px);
+            padding: 10px 20px;
+            border-radius: 80px;
+            @include bgc-nav();
+            box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
+        }
+        .drop_burger:hover {
+            background-color: $white;
+            transition: 0.4s ease-in-out;
+            transform: translateY(5px);
+        }
+    }
+}
+
+//MAIN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+h1 {
+    @include font(700, 80px);
+    margin: 0;
+    span {
+        @include font(700, 100px);
+    }
+}
+
+.posluga {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 125px;
+}
+
+.lined_dot_location {
+    position: relative;
+    width: 3px;
+    height: 860px;
+    background-color: #000;
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 15px;
+        height: 15px;
+        background-color: #000;
+        border-radius: 50%;
+    }
+}
+
+.map_point {
+    @include dot();
+    svg {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.map_point:hover {
+    width: 180px;
+    height: 180px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+//MENU!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+.menu {
+    width: 720px;
+    height: 755px;
+    border: 5px #000 solid;
+    background-color: rgb(255, 255, 255, 0.6);
+    border-radius: 80px;
+    transform: translateY(-175px);
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    .menu_inner {
+        margin: 25px 80px;
+        display: flex;
+        flex-wrap: wrap;
+        .menu_title {
+            @include font(400, 50px);
+            width: 100%;
+        }
+        .menu_nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            .menu_nav_btn {
+                width: 100%;
+                background-color: $white;
+                padding: 20px 60px;
+                @include font(300, 35px);
+                border-radius: 50px;
+                border: 2px #000 solid;
+                text-align: center;
+                cursor: pointer;
+            }
+            .menu_nav_btn:hover {
+                background-color: #000;
+                color: $white;
+                @include font(400, 35px);
+                @include active_btn_shadow();
+                transition: 0.2s;
+                #active_btn {
+                    width: 100%;
+                    background-color: $white;
+                    padding: 20px 60px;
+                    @include font(300, 35px);
+                    border-radius: 50px;
+                    border: 2px #000 solid;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: 0.2s;
+                }
+            }
+            #active_btn {
+                background-color: #000;
+                color: $white;
+                @include font(400, 35px);
+                @include active_btn_shadow();
+            }
+            .menu_nav_bigger {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                gap: 10px;
+                .menu_nav_btn_small {
+                    width: 50%;
+                    cursor: pointer;
+                    background-color: $white;
+                    padding: 20px 30px;
+                    @include font(300, 30px);
+                    border-radius: 50px;
+                    border: 2px #000 solid;
+                    text-align: center;
+                }
+                .menu_nav_btn_small:hover {
+                    background-color: #000;
+                    color: $white;
+                    transition: 0.2s;
+                    @include active_btn_shadow();
+                }
+            }
+        }
+    }
+}
+
+//ABOUT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+.about {
+    width: 100%;
+    display: flex;
+    text-align: end;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-between;
+    margin-bottom: 700px;
+    .about_text {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        text-align: end;
+        align-items: flex-end;
+        .about_title {
+            @include font($title_font_weight, $title_font_size);
+            margin-bottom: 45px;
+        }
+        .about_txt {
+            max-width: 760px;
+            margin-bottom: 45px;
+            @include font(200, 35px);
+            padding: 0;
+        }
+        .go_btn {
+            cursor: pointer;
+            width: auto;
+            height: auto;
+            border: none;
+            padding: 20px 30px;
+            background-color: #000;
+            border-radius: 40px;
+            @include font(400, 35px);
+            color: $white;
+            @include active_btn_shadow();
+        }
+    }
+    .about_img {
+        position: absolute;
+        top: 20%;
+        left: -40%;
+    }
+}
+
+//<!--            TEAM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+.team_title {
+    text-align: start;
+    margin-bottom: 50px;
+    @include font($title_font_weight, $title_font_size);
+}
+
+.team {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .team_about {
+        height: 850px;
+        .team_members {
+            width: 1100px;
+            border-radius: 80px;
+            .members {
+                display: flex;
+                width: auto;
+                margin-bottom: 0;
+                .team_member {
+                    width: 1100px;
+                    height: 750px;
+                    background-color: rgb(255, 255, 255, 0.55);
+                    border: 5px solid rgb(0, 0, 0, 0.48);
+                    border-radius: 80px;
+                    display: flex;
+                    padding: 25px 50px 20px 20px;
+                    .team_member_img {
+                        height: auto;
+                        width: 650px;
+                        border-radius: 60px;
+                        margin-right: 50px;
+                    }
+                    #diana.team_member_img{
+                        height: 300px;
+                    }
+                    .team_member_about {
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 50px;
+                        .team_member_title {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+                            text-align: center;
+                            gap: 5px;
+                            .team_member_name {
+                                @include font(700, 40px);
+                                margin: 0;
+                            }
+                            .team_member_role {
+                                @include font(400, 25px);
+                                margin: 0;
+                            }
+                        }
+                        .team_member_job {
+                            background-color: rgb(255, 255, 255, 0.4);
+                            border: 1px solid $design_color;
+                            border-radius: 40px;
+                            padding: 20px;
+                            @include font(400, 18px);
+                            width: 325px;
+                            ul {
+                                display: flex;
+                                gap: 50px;
+                                flex-direction: column;
+                                align-items: center;
+                                list-style: none; // прибираємо стандартні кружечки
+                                padding-left: 0;
+                                li {
+                                    position: relative;
+                                    padding-left: 40px;
+                                    &::before {
+                                        content: '';
+                                        position: absolute;
+                                        top: 50%;
+                                        left: 0;
+                                        transform: translateY(-50%);
+                                        width: 15px; // ширина круга
+                                        height: 15px; // висота круга
+                                        background-color: $design_color; // колір круга
+                                        border-radius: 50%; // круг
+                                    }
+                                }
+                            }
+                        }
+                        .team_member_contact {
+                            display: flex;
+                            gap: 50px;
+                        }
+                        #smaller_font_name {
+                            @include font(700, 33px);
+                        }
+                        #smaller_font_role {
+                            @include font(400, 20px);
+                        }
+                    }
+                }
+            }
+            .team_slider {
+                width: 370px;
+                height: 20px;
+                border-radius: 10px;
+                background-color: rgb(255, 255, 255, 0.55);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                padding: 5px 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                span {
+                    display: inline-block;
+                    width: 80px;
+                    height: 10px;
+                    border-radius: 10px;
+                    background-color: #000;
+                    opacity: 0.4;
+                }
+                .glide__bullet--active {
+                    background-color: #000;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .team_dot {
+        width: 10%;
+        text-align: end;
+        transform: translateY(-550px);
+        margin-left: 50px;
+        .team_point {
+            @include dot();
+        }
+        .lined_dot_team {
+            position: relative;
+            width: 3px;
+            height: 1150px;
+            background-color: #000;
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 15px;
+                height: 15px;
+                background-color: #000;
+                border-radius: 50%;
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 15px;
+                height: 15px;
+                background-color: #000;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+//RECORD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!     
+.record {
+    width: 100%;
+    display: flex;
+    gap: 125px;
+    margin-bottom: 200px;
+    .record_dot {
+        width: 10%;
+        text-align: end;
+        margin-left: 50px;
+        .record_point {
+            @include dot();
+            transform: translate(-50%, 300px);
+        }
+        .lined_dot_record {
+            position: relative;
+            width: 3px;
+            height: 1200px;
+            background-color: #000;
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 15px;
+                height: 15px;
+                background-color: #000;
+                border-radius: 50%;
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 15px;
+                height: 15px;
+                background-color: #000;
+                border-radius: 50%;
+            }
+        }
+    }
+    .hidden {
+        display: none !important;
+    }
+    .block {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        display: flex;
+    }
+    .record_form {
+        width: auto;
+        height: 850px;
+        background-color: rgb(255, 255, 255, 0.55);
+        border: 5px solid rgb(0, 0, 0, 0.48);
+        border-radius: 80px;
+        padding: 90px 50px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 70px;
+        .record_form_text {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            text-align: center;
+            .record_form_txt {
+                @include font(500, 35px);
+            }
+            .record_form_title {
+                @include font(700, 50px);
+                span {
+                    @include font(700, 50px);
+                }
+            }
+        }
+        .send_btn {
+            background-color: #000;
+            border: none;
+            padding: 25px 140px;
+            border-radius: 50px;
+            color: $white;
+            @include active_btn_shadow();
+            @include font(500, 35px);
+            margin-left: 175px;
+        }
+        .send_btn:hover {
+            border: 3px solid #000;
+            background-color: $white;
+            color: #000;
+            transition: 0.2s;
+        }
+        .record_form_inputs {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            gap: 30px;
+            .main_input {
+                width: 100%;
+                height: 100px;
+                border-radius: 50px;
+                background-color: rgb(255, 255, 255, 0.55);
+                border: 2px solid rgb(0, 0, 0, 0.48);
+                padding: 15px 30px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .problem_input {
+                    background-color: none;
+                    background: none;
+                    border: none;
+                    width: 100%;
+                    @include font(300, 25px);
+                    &:focus {
+                        background-color: #fff;
+                        outline: rgb(0, 0, 0);
+                        height: 100%;
+                        @include font(30, 14px);
+                        transition: 1s;
+                    }
+                }
+                img {
+                    width: 42px;
+                    height: 43px;
+                    opacity: 0.48;
+                }
+            }
+            form#contactForm {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                width: 100%;
+                align-items: center;
+                text-align: center;
+                flex-wrap: wrap;
+            }
+            .information_inputs {
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+                margin-bottom: 50px;
+                .information_input {
+                    width: 100%;
+                    height: 100px;
+                    border-radius: 50px;
+                    background-color: rgb(255, 255, 255, 0.55);
+                    border: 2px solid rgb(0, 0, 0, 0.48);
+                    padding: 15px 30px;
+                    text-align: center;
+                    @include font(300, 25px);
+                    &:focus {
+                        background-color: #fff;
+                        outline: rgb(0, 0, 0);
+                        height: 100px;
+                        @include font(300, 14px);
+                        transition: 1s;
+                    }
+                }
+                .information_input:last-child {
+                    width: 100%;
+                    height: 100px;
+                    border-radius: 50px;
+                    background-color: rgb(255, 255, 255, 0.55);
+                    border: 2px solid rgb(0, 0, 0, 0.48);
+                    padding: 15px 30px;
+                    text-align: center;
+                    @include font(300, 20px);
+                    &:focus {
+                        background-color: none;
+                        outline: rgb(0, 0, 0);
+                        height: 100px;
+                        @include font(300, 14px);
+                        transition: 1s;
+                    }
+                }
+            }
+        }
+    }
+    .record_form_sesuccess {
+        width: 100%;
+        height: 950px;
+        background-color: rgb(0, 0, 0, 1);
+        border: 5px solid rgb(0, 0, 0, 0.48);
+        border-radius: 80px;
+        padding: 90px 50px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 70px;
+        .record_form_text {
+            color: $white;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            text-align: center;
+            gap: 30px;
+            .record_form_txt {
+                @include font(400, 40px);
+            }
+        }
+        .success_logo {
+            margin-bottom: 100px;
+        }
+        .contacts {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            width: 100%;
+            align-items: center;
+            gap: 20px;
+            .phone_contact {
+                background-color: $white;
+                border-radius: 60px;
+                padding: 20px;
+                @include font(400, 35px);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: auto;
+                gap: 10px;
+            }
+            .social {
+                width: auto;
+                height: 80px;
+                background-color: $white;
+                border-radius: 50%;
+                padding: 20px;
+            }
+        }
+    }
+}
+
+//FOOTER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+footer {
+    width: 100%;
+    margin-bottom: 100px;
+    width: 100%;
+    border-radius: 40px;
+    padding: 15px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    color: #000;
+    @include bgc-nav;
+    .nav_inner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        .logo {
+            display: flex;
+            align-items: center;
+            img {
+                width: 80px;
+                height: 80px;
+                border-radius: 25px;
+                margin-right: 20px;
+            }
+            .logo_text {
+                span {
+                    @include font(700, 35px);
+                    padding: 0;
+                    margin: 0;
+                }
+                p {
+                    @include font(700, 15px);
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+            svg:nth-child(3) {
+                transform: translateY(15px);
+            }
+        }
+    }
+}
+
+//ERROR
+#responseMessage {
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-left: 4px solid;
+}
+
+#responseMessage.success {
+    display: block;
+    color: green;
+    border-left-color: green;
+}
+
+#responseMessage.error {
+    color: red;
+    border-left-color: red;
+}
