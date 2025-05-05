@@ -205,7 +205,9 @@ header {
                 align-items: center;
                 gap: 25px;
                 .change_lang{
-                    @include font(700, 20px);
+                    @include font(700, 40px);
+                    transition: 1s;
+                    cursor: pointer;
                 }
                 .change_lang:hover{
                     color:$design_color;
