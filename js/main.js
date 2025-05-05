@@ -9,9 +9,19 @@ burgerMenu.addEventListener('click', () => {
 })
 
 
-//telegram_bot_setup
+//fixed_header
+  const header = document.getElementById("scrolled");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
 
 
+//phone_macket
 
 document.addEventListener('DOMContentLoaded', () => {
     const phoneInput = document.querySelector('input[name="phone"]');
