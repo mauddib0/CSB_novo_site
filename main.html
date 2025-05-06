@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </nav>
-            <div class="drop_burger_links" id="drop_burger_links"> <a href="#" class="drop_burger">Про Нас</a> <a href="#" class="drop_burger">Команда</a> <a href="#" class="drop_burger">Новини та Події</a> <a href="#" class="drop_burger">Контакти</a> <a href="#" class="drop_burger">Під Ключ</a> <a href="#" class="drop_burger">Навчання</a> </div>
+            <div class="drop_burger_links" id="drop_burger_links"> <a href="#" class="drop_burger" id="about_us_scroll">Про Нас</a> <a href="#" class="drop_burger" id="team_scroll">Команда</a> <a href="#" class="drop_burger">Новини та Події</a> <a href="#" class="drop_burger">Контакти</a> <a href="#" class="drop_burger">Під Ключ</a> <a href="#" class="drop_burger">Навчання</a> </div>
         </header>
         <main>
             <h1>Центр Підтримки Бізнесу <span>NOVO</span></h1>
@@ -74,12 +74,12 @@
                         </a>
                     </div>
                 </div>
-                <aside class="menu">
-                    <div class="menu_inner">
+                <aside class="menu block" id="menu">
+                    <div class="menu_inner ">
                         <h2 class="menu_title">
                         Що ми пропонуємо?
                     </h2>
-                        <div class="menu_nav">
+                        <div class="menu_nav  ">
                             <button class="menu_nav_btn " id="active_btn"> Фахові Консультації </button>
                             <button class="menu_nav_btn"> Новини та Події </button>
                             <button class="menu_nav_btn"> Контакти </button>
@@ -89,16 +89,34 @@
                                 <button class="menu_nav_btn_small"> Навчання </button>
                             </div>
                         </div>
-<!--                        Активація кнопки про фахові консультації-->
-                        <div class="active_btn_consul">
-                            
+                    </div>
+                </aside>
+                <!--                        Активація кнопки про фахові консультації-->
+                <aside class="active_btn_consul hidden" id="active_consul">
+                    <div class="back_page_arrow" id="back_page_arrow">
+                        <svg fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve">
+                            <path id="XMLID_27_" d="M15,180h263.787l-49.394,49.394c-5.858,5.857-5.858,15.355,0,21.213C232.322,253.535,236.161,255,240,255
+	s7.678-1.465,10.606-4.394l75-75c5.858-5.857,5.858-15.355,0-21.213l-75-75c-5.857-5.857-15.355-5.857-21.213,0
+	c-5.858,5.857-5.858,15.355,0,21.213L278.787,150H15c-8.284,0-15,6.716-15,15S6.716,180,15,180z" /> </svg>
+                    </div>
+                    <div class="consul_action_inner">
+                    <div class="consul_inner">
+                        <h2 class="consul_inner_title">Фахові Консультації</h2>
+                        <p class="consul_inner_text"> Отримуйте фахові консультації з ведення <b style="font-size: 30px; font-weight: 500"> бізнесу, бухгалтерії, маркетингу, юриспруденції та грантового фінансування.</b> Наші експерти допоможуть вам правильно вести фінансову звітність, оптимізувати податки, уникати ризиків, ефективно просувати бізнес у соціальних мережах, залучати клієнтів та розширювати діяльність. </p>
+                        <div class="consul_inner_connect_info">
+                            <button class="go_to_form_btn" id="put_value_in_form_concul">Записатися на Консультацію</button>
+                            <div class="consul_inner_img">
+                           <a href="tel:+380935469097"> <svg width="44" height="43" viewBox="0 0 44 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M28.3316 2.55263C31.5558 2.91082 34.4573 4.47067 36.7527 6.76315C39.048 9.05563 40.6009 11.9604 40.9632 15.1842M27.279 9.92104C28.831 10.2238 30.3714 10.9082 31.4895 12.0263C32.6076 13.1444 33.292 14.6849 33.5948 16.2368M14.0169 29.4979C-0.505182 14.9741 1.55983 8.32346 3.09071 6.18033C3.28736 5.83393 8.13475 -1.42236 13.3308 2.83488C26.2281 13.4567 10.4369 13.0789 20.7304 22.7869C31.0238 32.4949 30.0609 17.2894 40.6809 30.184C44.9384 35.3821 37.6817 40.2292 37.3375 40.4237C35.1944 41.9568 28.5411 44.0216 14.0169 29.4979Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  /> </svg> </a>
+                                </div>
                         </div>
+                    </div>
                     </div>
                 </aside>
             </section>
         </main>
         <!--            ABOUT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-        <section class="about">
+        <section class="about" id="about">
             <div class="about_text">
                 <h2 class="about_title">
                 Місце для розвитку та Нових Можливостей
@@ -110,7 +128,7 @@
             </div> <img src="Assets/img/iphone_big.png" alt="???" class="about_img"> </section>
         <!--            TEAM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
         <h2 class="team_title">Наша Команда</h2>
-        <section class="team">
+        <section class="team" id="team">
             <div class="team_about glide">
                 <!--                клас слайдеру .team_about-->
                 <aside class="team_members glide__track" data-glide-el="track">
@@ -244,7 +262,7 @@
                 <form method="post" id="contactForm">
                     <div class="record_form_inputs">
                         <div class="main_input">
-                            <input type="text" name="problem" placeholder="Опишіть проблему одним реченням..." class="problem_input" name="problem" maxlength="100" required> <img src="Assets/icon/input_img.png" alt=","> </div>
+                            <input id="problem_input" type="text" name="problem" placeholder="Опишіть проблему одним реченням..." class="problem_input" name="problem" maxlength="100" required> <img src="Assets/icon/input_img.png" alt=","> </div>
                         <div class="information_inputs">
                             <input type="text" placeholder="Ім`я" class="information_input" name="name" required>
                             <input type="text" placeholder="Призвіще" class="information_input" name="surname" required>
