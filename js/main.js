@@ -9,7 +9,7 @@ burgerMenu.addEventListener('click', () => {
 const menu = document.getElementById("menu");
 const activate_btn = document.getElementById("active_btn");
 const active_consule = document.getElementById("active_consul");
-const backPageArrow = document.getElementById("back_page_arrow");
+const backPageArrow = document.getElementById("back_page_arrow_consul");
 
 activate_btn.addEventListener('click', () => {
     menu.classList.remove('block');
@@ -21,6 +21,47 @@ activate_btn.addEventListener('click', () => {
 backPageArrow.addEventListener('click', () => {
     active_consule.classList.remove('block');
     active_consule.classList.add('hidden');
+    menu.classList.remove('hidden');
+    menu.classList.add('block');
+});
+
+// Натискання на кнопку контакти
+
+const active_contact = document.getElementById("active_contact");
+const backPageArrowContact = document.getElementById("back_page_arrow_contact");
+const contact_btn = document.getElementById("contact_btn");
+
+contact_btn.addEventListener('click', () => {
+    menu.classList.remove('block');
+    menu.classList.add('hidden');
+    active_contact.classList.remove('hidden');
+    active_contact.classList.add('block');
+});
+
+backPageArrowContact.addEventListener('click', () => {
+    active_contact.classList.remove('block');
+    active_contact.classList.add('hidden');
+    menu.classList.remove('hidden');
+    menu.classList.add('block');
+});
+
+
+// Натискання на кнопку навчання
+
+const active_study = document.getElementById("active_study");
+const study_btn = document.getElementById("study_btn");
+const backPageArrowStudy = document.getElementById('back_page_arrow_study');
+
+study_btn.addEventListener('click', () => {
+    menu.classList.remove('block');
+    menu.classList.add('hidden');
+    active_study.classList.remove('hidden');
+    active_study.classList.add('block');
+});
+
+backPageArrowStudy.addEventListener('click', () => {
+    active_study.classList.remove('block');
+    active_study.classList.add('hidden');
     menu.classList.remove('hidden');
     menu.classList.add('block');
 });
@@ -56,7 +97,7 @@ putValueConsul.addEventListener('click', () => {
 const header = document.getElementById("scrolled");
 
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 150) {
+    if (window.scrollY > 300) {
         header.classList.add("scrolled");
     } else {
         header.classList.remove("scrolled");
