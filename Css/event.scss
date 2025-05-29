@@ -170,6 +170,9 @@ header {
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
+            a{
+                color: #000;
+            }
             .logo {
                 display: flex;
                 align-items: center;
@@ -191,6 +194,9 @@ header {
                         margin: 0;
                     }
                 }
+            }
+            .logo:hover{
+                cursor: pointer;
             }
             .nav_links {
                 display: flex;
@@ -766,12 +772,35 @@ a .home_link {
                     height: auto;
                     gap: 10px;
                 }
+                .phone_contact:hover{
+                cursor:pointer;
+                transition: 0.3s;
+                border: 2px solid $white;
+                color:$white;
+                background-color: #000;
+                svg path{
+                    stroke:$white;
+                    }
+                
+                }
                 .social {
                     width: auto;
                     height: 80px;
                     background-color: $white;
                     border-radius: 50%;
                     padding: 20px;
+                }
+                .social:hover{
+                cursor: pointer;
+                transition: 0.2s;
+                border: 1px solid $white;
+                background-color: #000;
+                svg{
+                    fill:$white;
+                    }
+                .telega_record{
+                    fill:$white;
+                    }
                 }
             }
         }

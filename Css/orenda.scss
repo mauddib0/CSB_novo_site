@@ -170,6 +170,9 @@ header {
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
+            a{
+                color: #000;
+            }
             .logo {
                 display: flex;
                 align-items: center;
@@ -424,6 +427,7 @@ a .home_link {
     .orenda_item_active{
         opacity: 1;
         border: 3px rgb(0,0,0,1) solid;
+        
     }
     .orenda_item_more_active{
         @include font(200,20px);
@@ -438,6 +442,7 @@ a .home_link {
     .orenda_btn_bron{
         width: 500px;
         margin-top: 10px;
+        margin-bottom: 20px;
         height: auto;
         background-color: #000;
         border-radius: 50px;
@@ -704,6 +709,17 @@ a .home_link {
                     height: auto;
                     gap: 10px;
                 }
+                .phone_contact:hover{
+                cursor:pointer;
+                transition: 0.3s;
+                border: 2px solid $white;
+                color:$white;
+                background-color: #000;
+                svg path{
+                    stroke:$white;
+                }
+                
+            }
                 .social {
                     width: auto;
                     height: 80px;
@@ -711,6 +727,18 @@ a .home_link {
                     border-radius: 50%;
                     padding: 20px;
                 }
+                .social:hover{
+                cursor: pointer;
+                transition: 0.2s;
+                border: 1px solid $white;
+                background-color: #000;
+                svg{
+                    fill:$white;
+                }
+                .telega_record{
+                    fill:$white;
+                }
+            }
             }
         }
     }

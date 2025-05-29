@@ -1,9 +1,22 @@
 const burgerMenu = document.getElementById("burger_menu");
 const dropNav = document.getElementById("drop_burger_links");
 burgerMenu.addEventListener('click', () => {
-    burgerMenu.classList.toggle('active_burger');
-    dropNav.classList.toggle('active_drop_burger_links')
+    if (window.scrollY > 500) {
+        document.getElementById('header').scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        // Відкрити меню трохи з затримкою, щоб не перекрити скрол
+        setTimeout(() => {
+            burgerMenu.classList.toggle('active_burger');
+            dropNav.classList.toggle('active_drop_burger_links');
+        }, 700); // 0.5 секунди — приблизна тривалість скролу
+    } else {
+        burgerMenu.classList.toggle('active_burger');
+        dropNav.classList.toggle('active_drop_burger_links');
+    }  
 });
+
 
 
 // fixed_header
@@ -17,6 +30,14 @@ window.addEventListener("scroll", () => {
     }
 });
 
+
+//scroll
+const navToFormScroll = document.getElementById('nav_to_form_scroll');
+navToFormScroll.addEventListener('click', () => {
+    document.getElementById('record').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
 // phone_macket
 document.addEventListener('DOMContentLoaded', () => {
     const phoneInput = document.querySelector('input[name="phone"]');

@@ -139,6 +139,9 @@ header nav .nav_inner {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+header nav .nav_inner a {
+  color: #000;
+}
 header nav .nav_inner .logo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -483,6 +486,7 @@ a .home_link {
 .orenda_items .orenda_btn_bron {
   width: 500px;
   margin-top: 10px;
+  margin-bottom: 20px;
   height: auto;
   background-color: #000;
   border-radius: 50px;
@@ -872,12 +876,36 @@ a .home_link {
   height: auto;
   gap: 10px;
 }
+.record .record_form_sesuccess .contacts .phone_contact:hover {
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background-color: #000;
+}
+.record .record_form_sesuccess .contacts .phone_contact:hover svg path {
+  stroke: #ffffff;
+}
 .record .record_form_sesuccess .contacts .social {
   width: auto;
   height: 80px;
   background-color: #ffffff;
   border-radius: 50%;
   padding: 20px;
+}
+.record .record_form_sesuccess .contacts .social:hover {
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  border: 1px solid #ffffff;
+  background-color: #000;
+}
+.record .record_form_sesuccess .contacts .social:hover svg {
+  fill: #ffffff;
+}
+.record .record_form_sesuccess .contacts .social:hover .telega_record {
+  fill: #ffffff;
 }
 
 footer {

@@ -1,8 +1,36 @@
+const glide_key = new Glide('.glide_key_more', {
+  type: 'carusel',
+  startAt: 0,
+  perView: 1,
+  gap:20,
+  focusAt:'center',
+  swipeThreshold:10,
+  animationDuration:1000,
+});
+glide_key.mount();
+
+
+
+
+
+///////////////////////
 const burgerMenu = document.getElementById("burger_menu");
 const dropNav = document.getElementById("drop_burger_links");
 burgerMenu.addEventListener('click', () => {
-    burgerMenu.classList.toggle('active_burger');
-    dropNav.classList.toggle('active_drop_burger_links')
+    if (window.scrollY > 300) {
+        document.getElementById('header').scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        // Відкрити меню трохи з затримкою, щоб не перекрити скрол
+        setTimeout(() => {
+            burgerMenu.classList.toggle('active_burger');
+            dropNav.classList.toggle('active_drop_burger_links');
+        }, 500); // 0.5 секунди — приблизна тривалість скролу
+    } else {
+        burgerMenu.classList.toggle('active_burger');
+        dropNav.classList.toggle('active_drop_burger_links');
+    }  
 });
 
 // consule_menu_open
@@ -30,12 +58,22 @@ backPageArrow.addEventListener('click', () => {
 const active_contact = document.getElementById("active_contact");
 const backPageArrowContact = document.getElementById("back_page_arrow_contact");
 const contact_btn = document.getElementById("contact_btn");
+const contactBurgerBtn = document.getElementById('contact_burger_btn');
 
 contact_btn.addEventListener('click', () => {
     menu.classList.remove('block');
     menu.classList.add('hidden');
     active_contact.classList.remove('hidden');
     active_contact.classList.add('block');
+});
+
+contactBurgerBtn.addEventListener('click', () => {
+    menu.classList.remove('block');
+    menu.classList.add('hidden');
+    active_contact.classList.remove('hidden');
+    active_contact.classList.add('block');
+    burgerMenu.classList.remove('active_burger');
+    dropNav.classList.remove('active_drop_burger_links')
 });
 
 backPageArrowContact.addEventListener('click', () => {
@@ -66,9 +104,101 @@ backPageArrowStudy.addEventListener('click', () => {
     menu.classList.add('block');
 });
 
+/// Натискання на кнопку під ключ
+const active_key = document.getElementById("active_key");
+const key_btn = document.getElementById("key_btn");
+const backPageArrowKey = document.getElementById('back_page_arrow_key');
+
+key_btn.addEventListener('click', () => {
+    menu.classList.remove('block');
+    menu.classList.add('hidden');
+    active_key.classList.remove('hidden');
+    active_key.classList.add('block');
+});
+
+backPageArrowKey.addEventListener('click', () => {
+    active_key.classList.remove('block');
+    active_key.classList.add('hidden');
+    menu.classList.remove('hidden');
+    menu.classList.add('block');
+});
+
+// Натискання на кнопку більше про послуги під ключ
+document.addEventListener('DOMContentLoaded', () => {
+const openKeyService = document.getElementById('open_key_serv');
+const backPageArrowKeyMore = document.getElementById('back_page_arrow_key_more');
+const activeKeyMore = document.getElementById('active_key_more');
+
+openKeyService.addEventListener('click', (e) => {
+    e.preventDefault();
+    active_key.classList.remove('block');
+    active_key.classList.add('hidden');
+    activeKeyMore.classList.remove('hidden');
+    activeKeyMore.classList.add('block');
+    glide_key.update();
+    
+});
+    
+backPageArrowKeyMore.addEventListener('click', () => {
+    activeKeyMore.classList.remove('block');
+    activeKeyMore.classList.add('hidden');
+    active_key.classList.remove('hidden');
+    active_key.classList.add('block');
+});
+});
+
+// Заповнення форми під ключ
+const formSMM = document.getElementById('put_value_in_form_smm');
+
+formSMM.addEventListener('click', () => {
+   problemInput.value = 'Створення та налаштування облікових записів';
+   document.getElementById('record_form').scrollIntoView({
+        behavior: 'smooth'
+   });
+});
+
+const formContentStrategy = document.getElementById('put_value_in_form_content_strategy');
+
+formContentStrategy.addEventListener('click', () => {
+   problemInput.value = 'Я хочу сформувати унікальний план публікацій';
+   document.getElementById('record_form').scrollIntoView({
+        behavior: 'smooth'
+   });
+});
+
+const formCreateContent = document.getElementById('put_value_in_form_create_content');
+
+formCreateContent.addEventListener('click', () => {
+    problemInput.value = 'Бажаю згенерувати якісьний контент';
+    document.getElementById('record_form').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
+
+const formFilming = document.getElementById('put_value_in_form_filming');
+
+formFilming.addEventListener('click', () => {
+    problemInput.value = 'Хочу скористатися послугою професійної відеозйомки';
+    document.getElementById('record_form').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
+
+const formOrganization = document.getElementById('put_value_in_form_organization');
+
+formOrganization.addEventListener('click', () => {
+    problemInput.value = 'Менторство: Від ідеї до реалізації';
+    document.getElementById('record_form').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
+
+
+
 // Скрол з навігації до елементів
 const aboutUsScroll = document.getElementById("about_us_scroll");
 const teamScroll = document.getElementById("team_scroll");
+
 
 aboutUsScroll.addEventListener('click', () => {
     document.getElementById('about').scrollIntoView({
@@ -81,6 +211,10 @@ teamScroll.addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
+
+
+
+
 
 // Встановлення тексту в інпут через натискання на кнопку
 const problemInput = document.getElementById("problem_input");

@@ -12,7 +12,7 @@ var glide = new Glide('.glide', {
 
 glide.mount();
 
-var glide = new Glide('.glide_speak', {
+var glide_speak = new Glide('.glide_speak', {
   type: 'slider',
   startAt: 0,
   perView: 1,
@@ -24,9 +24,9 @@ var glide = new Glide('.glide_speak', {
   bound: false,
 });
 
-glide.mount();
+glide_speak.mount();
 
-var glide = new Glide('.glide_event', {
+var glide_event = new Glide('.glide_event', {
   type: 'slider',
   startAt: 0,
   perView: 1,
@@ -38,9 +38,9 @@ var glide = new Glide('.glide_event', {
   bound: false,
 });
 
-glide.mount();
+glide_event.mount();
 
-var glide = new Glide('.glide_speak2', {
+var glide_speak2 = new Glide('.glide_speak2', {
   type: 'slider',
   startAt: 0,
   perView: 1,
@@ -52,4 +52,4 @@ var glide = new Glide('.glide_speak2', {
   bound: false,
 });
 
-glide.mount();
+glide_speak2.mount();
