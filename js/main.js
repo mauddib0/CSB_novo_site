@@ -17,7 +17,7 @@ glide_key.mount();
 const burgerMenu = document.getElementById("burger_menu");
 const dropNav = document.getElementById("drop_burger_links");
 burgerMenu.addEventListener('click', () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 500) {
         document.getElementById('header').scrollIntoView({
             behavior: 'smooth'
         });

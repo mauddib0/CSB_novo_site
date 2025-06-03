@@ -9,6 +9,10 @@ const glide = new Glide('.glide', {
 });
 glide.mount();
 
+
+window.addEventListener('resize', () => {
+  glide.update(); // перерахунок ширин
+});
 //const glide_key = new Glide('.glide_key_more', {
 //  type: 'carusel',
 //  startAt: 0,

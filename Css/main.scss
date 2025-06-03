@@ -28,6 +28,9 @@
 @mixin transition($time) {
     transition: $time ease;
 }
+@mixin drop_shadow_mobile_dot(){
+        box-shadow: 4px 4px 18px rgb(0,0,0,0.3);
+    }
 
 //VARS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 $color_decor:red;
@@ -35,6 +38,7 @@ $white:#ffffff;
 $title_font_size:80px;
 $title_font_weight:700;
 $design_color:#FFCACA;
+$bgc_mobile:#FFE8E8;
 //Значення	Назва	Опис
 //100	Thin	Дуже тонкий шрифт
 //200	Extra Light / Ultra Light	Ледь товщий за 100
@@ -52,7 +56,7 @@ $design_color:#FFCACA;
 }
 
 body {
-    background-color: #fff;
+    background-color: $bgc_mobile;
     @include font(100, 24);
     display: flex;
     align-self: center;
@@ -69,14 +73,15 @@ body {
 //                transform: translate(0, 0);
 //            }
 //        }
-//        
-//        .decor,
-//        .decor1,
-//        .decor2,
-//        .decor3,
-//        .decor4 {
-//            animation: moveDecor 5s infinite ease-in-out;
-//        }
+.decor,
+.decor1,
+.decor2,
+.decor3,
+.decor4,
+.decor5 {
+    display: none;
+}
+
 .decor {
     width: 600px;
     height: 600px;
@@ -165,7 +170,7 @@ body {
 //    Блок видимий
 .block {
     transition: opacity 0.3s ease, transform 0.3s ease;
-    display: flex ;
+    display: flex;
 }
 
 //NAVIGATION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -247,17 +252,19 @@ header {
                     }
                 }
                 //burger hover & drop animation
-                .burger_menu:hover {
-                    span:nth-child(1) {
-                        width: 45px;
+                @media (hover: hover) and (pointer: fine) {
+                    .burger_menu:hover {
+                        span:nth-child(1) {
+                            width: 45px;
+                        }
+                        span:nth-child(2) {
+                            width: 45px;
+                        }
+                        span:nth-child(3) {
+                            width: 45px;
+                        }
+                        transition: 0.2s;
                     }
-                    span:nth-child(2) {
-                        width: 45px;
-                    }
-                    span:nth-child(3) {
-                        width: 45px;
-                    }
-                    transition: 0.2s;
                 }
                 .burger_menu.active_burger span:nth-child(1) {
                     transform: rotate(45deg) translate(9px, 6px);
@@ -326,6 +333,9 @@ h1 {
     width: 100%;
     justify-content: space-between;
     margin-top: 125px;
+    .mobile_about_us {
+        display: none;
+    }
 }
 
 .lined_dot_location {
@@ -666,17 +676,17 @@ h1 {
             color: $white;
             text-decoration: none;
         }
-        .phone_contact:hover{
+        .phone_contact:hover {
             background-color: $white;
             border: 2px solid #000;
             transition: 0.2s;
             cursor: pointer;
-            color:#000;
-            svg path{
-                stroke:#000;
+            color: #000;
+            svg path {
+                stroke: #000;
             }
-            a{
-                color:#000;
+            a {
+                color: #000;
             }
         }
         .social {
@@ -686,17 +696,17 @@ h1 {
             padding: 20px;
             border: 1px solid #000;
         }
-        .social:hover{
+        .social:hover {
             cursor: pointer;
             transition: 0.2s;
-            border:none;
+            border: none;
             transform: translateY(-10px);
             background-color: $white;
-            svg{
-                fill:$design_color;
+            svg {
+                fill: $design_color;
             }
-            .telega_contact{
-                fill:$design_color;
+            .telega_contact {
+                fill: $design_color;
             }
         }
     }
@@ -930,7 +940,6 @@ h1 {
     gap: 50px;
     width: 1000px;
     flex-wrap: nowrap;
-    
     .back_page_arrow {
         width: 50px;
         height: 50px;
@@ -978,7 +987,7 @@ h1 {
                             align-items: center;
                             text-align: center;
                             margin: 0;
-                            gap:30px;
+                            gap: 30px;
                             .consul_inner_title {
                                 display: flex;
                                 width: 100%;
@@ -1174,7 +1183,7 @@ h1 {
                         margin-right: 50px;
                     }
                     #diana.team_member_img {
-                        height: 300px;
+                        height: 250px;
                     }
                     .team_member_about {
                         display: flex;
@@ -1525,16 +1534,15 @@ h1 {
                 height: auto;
                 gap: 10px;
             }
-            .phone_contact:hover{
-                cursor:pointer;
+            .phone_contact:hover {
+                cursor: pointer;
                 transition: 0.3s;
                 border: 2px solid $white;
-                color:$white;
+                color: $white;
                 background-color: #000;
-                svg path{
-                    stroke:$white;
+                svg path {
+                    stroke: $white;
                 }
-                
             }
             .social {
                 width: auto;
@@ -1543,16 +1551,16 @@ h1 {
                 border-radius: 50%;
                 padding: 20px;
             }
-            .social:hover{
+            .social:hover {
                 cursor: pointer;
                 transition: 0.2s;
                 border: 1px solid $white;
                 background-color: #000;
-                svg{
-                    fill:$white;
+                svg {
+                    fill: $white;
                 }
-                .telega_record{
-                    fill:$white;
+                .telega_record {
+                    fill: $white;
                 }
             }
         }
@@ -1615,21 +1623,659 @@ footer {
     }
 }
 
-//ERROR
-#responseMessage {
-    display: none;
-    padding: 10px;
-    margin-top: 10px;
-    border-left: 4px solid;
-}
+//Media
+@media (max-width:375px) {
+    
+    .decor .decor1 .decor2 .decor3 .decor4 .decor5 {
+        display: none;
+    }
+    body {
+        background-color: $bgc_mobile;
+    }
+    .container {
+        width: 375px;
+        max-width: 375px;
+        margin-top: 25px;
+        overflow: hidden;
+    }
+    .about {
+        display: none;
+    }
+    //    header
+    header {
+        align-items: flex-end;
+        z-index: 1000;
+        
+        position: relative;
+        nav {
+            width: 100%;
+            border-radius: 20px;
+            padding: 5px 10px;
+            .nav_inner {
+                .logo {
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 10px;
+                        margin-right: 0;
+                    }
+                    .logo_text {
+                        display: none;
+                    }
+                }
+                .nav_links {
+                    gap: 20px;
+                    .change_lang {
+                        @include font(700, 10px);
+                    }
+                    .burger_menu {
+                        span {
+                            height: 2px;
+                            width: 20px;
+                            border-radius: 10px;
+                        }
+                        span:nth-child(2) {
+                            height: 2px;
+                            width: 25px;
+                        }
+                        span:nth-child(3) {
+                            height: 2px;
+                            width: 15px;
+                        }
+                    }
+                    &.active_burger {
+                        span:nth-child(1) {
+                            width: 25px;
+                            transform: rotate(45deg) translate(5px, 5px);
+                        }
+                        span:nth-child(2) {
+                            opacity: 0;
+                        }
+                        span:nth-child(3) {
+                            transform: rotate(-45deg) translate(5px, -5px);
+                            width: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        .drop_burger_links.active_drop_burger_links {
+            flex-direction: column;
+            width: 250px;
+            height: 300px;
+            align-items: flex-end;
+            position: absolute;
+            top: 70px;
+            background-color: $bgc_mobile;
+            padding: 20px;
+            border-radius: 20px;
+            height: auto;
+            box-shadow: 5px 16px 25px rgb(0, 0, 0, 0.65);
+            z-index: 1000;
+            gap: 15px;
+            align-items: center;
+            .drop_burger {
+                width: auto;
+                height: auto;
+                text-align: center;
+                margin: 0 auto;
+                @include font(500, 15px);
+                border-radius: 15px;
+                padding: 10px 30px 10px 30px;
+            }
+        }
+    }
 
-#responseMessage.success {
-    display: block;
-    color: green;
-    border-left-color: green;
-}
-
-#responseMessage.error {
-    color: red;
-    border-left-color: red;
+    /////main
+    main {
+        h1 {
+            margin-left: 10px;
+            width: 100%;
+            @include font(700, 25px);
+            span {
+                @include font(700, 35px);
+            }
+            margin-bottom: 0;
+        }
+        .posluga {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            flex-direction: column;
+            .main_dot {
+                display: none;
+            }
+            .menu {
+                display: none;
+            }
+            .mobile_about_us {
+                display: flex;
+                height: auto;
+                justify-content: space-between;
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 100px;
+                position: relative;
+                
+                p {
+                    @include font(400, 14px);
+                    width: 210px;
+                    margin-left: 10px;
+                }
+                .mobile_social_main {
+                    width: 130px;
+                    position: relative;
+                }
+                .mobile_social {
+                    width: 55px;
+                    height: 55px;
+                    border-radius: 50%;
+                    background-color: #000;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 20px;
+                    margin-left: 10px;
+                    .glow_icon {
+                        width: 25px;
+                        height: 25px;
+                        fill: $white;
+                        filter: drop-shadow(0 0 5px white) drop-shadow(0 0 10px white) drop-shadow(0 0 15px white);
+                        path {
+                            fill: $white;
+                        }
+                    }
+                    .glow_icon_inst {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+                .mobile_social:nth-child(1) {
+                    position: absolute;
+                    bottom:120px;
+                    left: 220px;
+                }
+                .mobile_social:nth-child(2) {
+                    position: absolute;
+                    bottom: 100px;
+                    left: 290px;
+                }
+                .mobile_social:nth-child(3) {
+                    position: absolute;
+                    bottom: 50px;
+                    left: 220px;
+                }
+                .mobile_social:nth-child(4) {
+                    position: absolute;
+                    bottom: 20px;
+                    left: 290px;
+                }
+            }
+            .novo_bar {
+                width: 100%;
+                overflow: hidden;
+                background-color: #fff;
+                margin-top: 15px;
+                border-radius: 10px;
+                .novo_bar_track {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    text-align: center;
+                    animation: scroll 3s linear infinite;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    .novo1 {
+                        color: $design_color;
+                    }
+                    .novo2 {
+                        color: $white;
+                        -webkit-text-stroke: 1px #000;
+                    }
+                    .novo3 {
+                        color: #000;
+                    }
+                    .novo4 {
+                        color: $white;
+                        -webkit-text-stroke: 1px $design_color;
+                    }
+                }
+                .novo_bar_track span {
+                    @include font(700, 25px);
+                }
+                @keyframes scroll {
+                    0% {
+                        transform: translateX(0%);
+                    }
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+            .phone_main {
+                width: 100%;
+                margin-top: 20px;
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                .mobile_img{
+                    position: absolute;
+                    top: -100px;
+                    left: -140px;
+                }
+                .mobile_main_dot {
+                    margin-left: 40px;
+                    .lined_dot_location_mobile {
+                        position: relative;
+                        width: 2px;
+                        height: 460px;
+                        background-color: #000;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            bottom: 0;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            width: 15px;
+                            height: 15px;
+                            background-color: #000;
+                            border-radius: 50%;
+                        }
+                        .map_point_mobile{
+                            position: relative;
+                             width: 70px;
+                             height: 70px;
+                             background-color: #000;
+                             border-radius: 50%;
+                             box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
+                             transform: translate(-50%, 120%);
+                             display: flex;
+                             align-items: center;
+                             justify-content: center;
+                            svg{
+                            width: 30px;
+                            height: 30px;
+                        }
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+    .team_title {
+        @include font(700,40px);
+        text-align: end;
+        margin-top: -10px;
+        margin-right: 10px;
+    }
+    
+    .team{
+        max-width: 100%;
+        width: 100%;
+        align-items: flex-end;
+        margin-left: 10px;
+        margin-right: 10px;
+        
+        .team_about{
+            height: 400px;
+            justify-content: flex-end;
+            align-items: flex-end;
+            width: 100%;
+            
+            .team_members{
+                width:100%;
+                max-width: 260px;
+                border-radius: 20px 0px 0px 20px;
+                align-items: flex-end;
+                
+                overflow: visible;
+                .members{
+                    width: 100%;
+                    align-items: flex-end;
+                    gap:-10px;
+                    
+                    
+                .team_member{
+                    width: 260px;
+                    height: 320px;
+                    flex-direction: column;
+                    border-radius: 20px;
+                    margin: 0;
+                    padding: 0;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    gap:10px;
+                    border: 1px solid rgb(0, 0, 0, 0.48);
+                    .team_member_img{
+                        width: 230px;
+                        height: 240px;
+                        border-radius: 15px;
+                        margin-right: 0;
+                    }
+                    .team_member_about{
+                     .team_member_title{
+                         gap:1px;
+                        .team_member_name{
+                            @include font(700,20px);
+                        }
+                        .team_member_role{
+                            @include font(300,15px);
+                        }
+                         #smaller_font_name{
+                             @include font(700,20px);
+                         }
+                         #smaller_font_role{
+                             @include font(300,15px);
+                         }
+                    }
+                    .team_member_job{
+                        display: none;
+                    }
+                    .team_member_contact{
+                        display: none;
+                    }
+                  }
+                }
+                }
+                .team_slider{
+                    width: 160px;
+                    height: 20px;
+                    border-radius:10px;
+                    padding: 3px 5px 3px 5px;
+                    span{
+                        width: 30px;
+                        height: 10px;
+                        
+                    }
+                }
+            }
+        }
+        .team_dot{
+                display: none;
+            }
+    }
+    
+    .record{
+        flex-direction: column;
+        margin-top: 70px;
+        display: flex;
+        align-items: center;
+        
+        .record_dot {
+        width: 100%;
+        text-align: end;
+            margin-left: 0;
+            transform: translateY(-10px);
+        .record_point {
+            width: 70px;
+            height: 70px;
+            transform: translate(-50%, 300px);
+             background-color: #000;
+    border-radius: 50%;
+    box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
+    transform: translate(150%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        }
+        .lined_dot_record {
+            position: relative;
+            width:340px;
+            height: 2px;
+            background-color: #000;
+            @include drop_shadow_mobile_dot();
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -300%;
+                left: 100%;
+                transform: translateX(-50%);
+                width: 15px;
+                height: 15px;
+                background-color: #000;
+                border-radius: 50%;
+            }
+            &::before{
+                display: none;
+            }
+            img{
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+        .record_form {
+            margin-right: 10px;
+            margin-left: 10px;
+        width: auto;
+        height: 370px;
+        background-color: rgb(255, 255, 255, 0.55);
+        border: 1px solid rgb(0, 0, 0, 0.48);
+        border-radius: 20px;
+        padding: 25px 20px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        #contactForm {
+                display: flex;
+                flex-direction: column;
+                
+                width: 290px;
+                align-items: center;
+                text-align: center;
+                flex-wrap: wrap;
+            } 
+        .record_form_text {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            text-align: center;
+            .record_form_txt {
+                @include font(500, 15px);
+            }
+            .record_form_title {
+                margin-bottom: 15px;
+                @include font(700, 18px);
+                span {
+                    @include font(700, 18px);
+                }
+            }
+        }
+        .send_btn {
+            background-color: #000;
+            border: none;
+            width: 190px;
+            padding: 10px 50px;
+            border-radius: 50px;
+            color: $white;
+            @include font(500, 15px);
+            margin-left: 0;
+        }
+        .send_btn:hover {
+            border: 1px solid #000;
+            background-color: $white;
+            color: #000;
+            transition: 0.2s;
+        }
+        .record_form_inputs {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            gap: 15px;
+            .main_input {
+                width: 300px;
+                height: 40px;
+                border-radius: 15px;
+                background-color: rgb(255, 255, 255, 0.55);
+                border: 1px solid rgb(0, 0, 0, 0.48);
+                padding: 7px 25px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .problem_input {
+                    background-color: none;
+                    background: none;
+                    border: none;
+                    width: 100%;
+                    @include font(300, 11px);
+                    &:focus {
+                        background: none;
+                        outline: rgb(0, 0, 0);
+                        height: 35px;
+                        @include font(300, 15px);
+                        transition: 1s;
+                    }
+                }
+                img {
+                    width: 25px;
+                    height: 25px;
+                    opacity: 0.48;
+                }
+            }
+            .information_inputs {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 15px;
+                margin-bottom: 15px;
+                .information_input {
+                    width: 140px;
+                    height: 40px;
+                    border-radius: 15px;
+                    background-color: rgb(255, 255, 255, 0.55);
+                    border: 1px solid rgb(0, 0, 0, 0.48);
+                    padding: 10px 30px;
+                    text-align: center;
+                    @include font(300, 12px);
+                    &:focus {
+                        outline: rgb(0, 0, 0);
+                        height: 40px;
+                        @include font(300, 12px);
+                        transition: 1s;
+                    }
+                }
+                .information_input:last-child {
+                    width: 300px;
+                    height: 40px;
+                    border-radius: 15px;
+                    background-color: rgb(255, 255, 255, 0.55);
+                    border: 1px solid rgb(0, 0, 0, 0.48);
+                    padding: 10px 30px;
+                    text-align: center;
+                    @include font(300, 12px);
+                    &:focus {
+                        background-color: none;
+                        outline: rgb(0, 0, 0);
+                        height: 40px;
+                        @include font(300, 14px);
+                        transition: 1s;
+                    }
+                }
+            }
+        }
+    }
+        
+        .record_form_sesuccess {
+        width: 355px;
+        height: auto;
+        background-color: rgb(0, 0, 0, 1);
+        border: 5px solid rgb(0, 0, 0, 0.48);
+        border-radius: 20px;
+        padding: 25px 20px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+        .record_form_text {
+            color: $white;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            text-align: center;
+            gap: 10px;
+            .record_form_txt {
+                @include font(400, 20px);
+            }
+        }
+        .success_logo {
+            margin-bottom: 20px;
+            width: 150px;
+            height: 150px;
+        }
+        .contacts {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            height: auto;
+            align-items: center;
+            justify-content: space-around;
+            .phone_contact {
+                background-color: $white;
+                border-radius: 15px;
+                padding: 10px;
+                @include font(400, 15px);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: auto;
+                gap: 10px;
+                width: auto;
+                svg{
+                    width: 25px;
+                    height: 25px;
+                }
+                p{
+                    display: none;
+                }
+            }
+            .phone_contact:hover {
+                cursor: pointer;
+                transition: 0.3s;
+                border: 2px solid $white;
+                color: $white;
+                background-color: #000;
+                svg path {
+                    stroke: $white;
+                }
+            }
+            .social {
+                width: auto;
+                height: auto;
+                background-color: $white;
+                border-radius: 15px;
+                padding: 10px;
+                display: flex;
+                svg{
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+            .social:hover {
+                cursor: pointer;
+                transition: 0.2s;
+                border: 1px solid $white;
+                background-color: #000;
+                svg {
+                    fill: $white;
+                    
+                }
+                .telega_record {
+                    fill: $white;
+                }
+            }
+        }
+    }
+    }
+    
+    
+    footer{
+        display: none;
+    }
 }
