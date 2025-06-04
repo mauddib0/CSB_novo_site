@@ -28,9 +28,10 @@
 @mixin transition($time) {
     transition: $time ease;
 }
-@mixin drop_shadow_mobile_dot(){
-        box-shadow: 4px 4px 18px rgb(0,0,0,0.3);
-    }
+
+@mixin drop_shadow_mobile_dot() {
+    box-shadow: 4px 4px 18px rgb(0, 0, 0, 0.3);
+}
 
 //VARS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 $color_decor:red;
@@ -39,6 +40,7 @@ $title_font_size:80px;
 $title_font_weight:700;
 $design_color:#FFCACA;
 $bgc_mobile:#FFE8E8;
+$black:#000000;
 //Значення	Назва	Опис
 //100	Thin	Дуже тонкий шрифт
 //200	Extra Light / Ultra Light	Ледь товщий за 100
@@ -48,7 +50,11 @@ $bgc_mobile:#FFE8E8;
 //600	Semi Bold / Demi Bold	Між 500 і жирним (700)
 //700	Bold	Жирний шрифт
 //800	Extra Bold / Ultra Bold	Дуже жирний
-//900	Black / Heavy	Максимально жирний шрифт        
+//900	Black / Heavy	Максимально жирний шрифт  
+html {
+    --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -171,6 +177,10 @@ body {
 .block {
     transition: opacity 0.3s ease, transform 0.3s ease;
     display: flex;
+}
+
+.menu_mobile_service {
+    display: none;
 }
 
 //NAVIGATION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -304,6 +314,9 @@ header {
             transition: 0.4s ease-in-out;
             transform: translateY(5px);
         }
+        #contact_burger_btn_mobile{
+            display: none;
+        }
     }
 }
 
@@ -358,7 +371,7 @@ h1 {
 
 .map_point {
     @include dot();
-    svg {
+    #location {
         width: 80px;
         height: 80px;
     }
@@ -1625,7 +1638,6 @@ footer {
 
 //Media
 @media (max-width:375px) {
-    
     .decor .decor1 .decor2 .decor3 .decor4 .decor5 {
         display: none;
     }
@@ -1633,7 +1645,7 @@ footer {
         background-color: $bgc_mobile;
     }
     .container {
-        width: 375px;
+        width: 100%;
         max-width: 375px;
         margin-top: 25px;
         overflow: hidden;
@@ -1645,7 +1657,6 @@ footer {
     header {
         align-items: flex-end;
         z-index: 1000;
-        
         position: relative;
         nav {
             width: 100%;
@@ -1723,9 +1734,17 @@ footer {
                 border-radius: 15px;
                 padding: 10px 30px 10px 30px;
             }
+            #about_us_scroll{
+                display: none;
+            }
+            #contact_burger_btn{
+                display: none;
+            }
+            #contact_burger_btn_mobile{
+                display: flex;
+            }
         }
     }
-
     /////main
     main {
         h1 {
@@ -1757,7 +1776,6 @@ footer {
                 width: 100%;
                 margin-bottom: 100px;
                 position: relative;
-                
                 p {
                     @include font(400, 14px);
                     width: 210px;
@@ -1793,7 +1811,7 @@ footer {
                 }
                 .mobile_social:nth-child(1) {
                     position: absolute;
-                    bottom:120px;
+                    bottom: 120px;
                     left: 220px;
                 }
                 .mobile_social:nth-child(2) {
@@ -1859,7 +1877,7 @@ footer {
                 position: relative;
                 display: flex;
                 justify-content: space-between;
-                .mobile_img{
+                .mobile_img {
                     position: absolute;
                     top: -100px;
                     left: -140px;
@@ -1882,400 +1900,845 @@ footer {
                             background-color: #000;
                             border-radius: 50%;
                         }
-                        .map_point_mobile{
+                        .map_point_mobile {
                             position: relative;
-                             width: 70px;
-                             height: 70px;
-                             background-color: #000;
-                             border-radius: 50%;
-                             box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
-                             transform: translate(-50%, 120%);
-                             display: flex;
-                             align-items: center;
-                             justify-content: center;
-                            svg{
-                            width: 30px;
-                            height: 30px;
+                            width: 70px;
+                            height: 70px;
+                            background-color: #000;
+                            border-radius: 50%;
+                            box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
+                            transform: translate(-50%, 120%);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            #location_mobile {
+                                width: 25px;
+                                height: 25px;
+                            }
                         }
-                        }
-                        
                     }
                 }
             }
         }
     }
     .team_title {
-        @include font(700,40px);
+        @include font(700, 40px);
         text-align: end;
         margin-top: -10px;
         margin-right: 10px;
     }
-    
-    .team{
+    .team {
         max-width: 100%;
         width: 100%;
         align-items: flex-end;
         margin-left: 10px;
         margin-right: 10px;
-        
-        .team_about{
+        .team_about {
             height: 400px;
             justify-content: flex-end;
             align-items: flex-end;
             width: 100%;
-            
-            .team_members{
-                width:100%;
+            .team_members {
+                width: 100%;
                 max-width: 260px;
                 border-radius: 20px 0px 0px 20px;
                 align-items: flex-end;
-                
                 overflow: visible;
-                .members{
+                .members {
                     width: 100%;
                     align-items: flex-end;
-                    gap:-10px;
-                    
-                    
-                .team_member{
-                    width: 260px;
-                    height: 320px;
-                    flex-direction: column;
-                    border-radius: 20px;
-                    margin: 0;
-                    padding: 0;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
-                    gap:10px;
-                    border: 1px solid rgb(0, 0, 0, 0.48);
-                    .team_member_img{
-                        width: 230px;
-                        height: 240px;
-                        border-radius: 15px;
-                        margin-right: 0;
-                    }
-                    .team_member_about{
-                     .team_member_title{
-                         gap:1px;
-                        .team_member_name{
-                            @include font(700,20px);
+                    gap: -10px;
+                    .team_member {
+                        width: 260px;
+                        height: 320px;
+                        flex-direction: column;
+                        border-radius: 20px;
+                        margin: 0;
+                        padding: 0;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        gap: 10px;
+                        border: 1px solid rgb(0, 0, 0, 0.48);
+                        .team_member_img {
+                            width: 230px;
+                            height: 240px;
+                            border-radius: 15px;
+                            margin-right: 0;
                         }
-                        .team_member_role{
-                            @include font(300,15px);
+                        .team_member_about {
+                            .team_member_title {
+                                gap: 1px;
+                                .team_member_name {
+                                    @include font(700, 20px);
+                                }
+                                .team_member_role {
+                                    @include font(300, 15px);
+                                }
+                                #smaller_font_name {
+                                    @include font(700, 20px);
+                                }
+                                #smaller_font_role {
+                                    @include font(300, 15px);
+                                }
+                            }
+                            .team_member_job {
+                                display: none;
+                            }
+                            .team_member_contact {
+                                display: none;
+                            }
                         }
-                         #smaller_font_name{
-                             @include font(700,20px);
-                         }
-                         #smaller_font_role{
-                             @include font(300,15px);
-                         }
                     }
-                    .team_member_job{
-                        display: none;
-                    }
-                    .team_member_contact{
-                        display: none;
-                    }
-                  }
                 }
-                }
-                .team_slider{
+                .team_slider {
                     width: 160px;
                     height: 20px;
-                    border-radius:10px;
+                    border-radius: 10px;
                     padding: 3px 5px 3px 5px;
-                    span{
+                    span {
                         width: 30px;
                         height: 10px;
-                        
                     }
                 }
             }
         }
-        .team_dot{
-                display: none;
-            }
+        .team_dot {
+            display: none;
+        }
     }
-    
-    .record{
+    .record {
         flex-direction: column;
         margin-top: 70px;
         display: flex;
         align-items: center;
-        
         .record_dot {
-        width: 100%;
-        text-align: end;
+            width: 100%;
+            text-align: end;
             margin-left: 0;
             transform: translateY(-10px);
-        .record_point {
-            width: 70px;
-            height: 70px;
-            transform: translate(-50%, 300px);
-             background-color: #000;
-    border-radius: 50%;
-    box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
-    transform: translate(150%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-        }
-        .lined_dot_record {
-            position: relative;
-            width:340px;
-            height: 2px;
-            background-color: #000;
-            @include drop_shadow_mobile_dot();
-            &::after {
-                content: "";
-                position: absolute;
-                bottom: -300%;
-                left: 100%;
-                transform: translateX(-50%);
-                width: 15px;
-                height: 15px;
+            .record_point {
+                width: 70px;
+                height: 70px;
+                transform: translate(-50%, 300px);
                 background-color: #000;
                 border-radius: 50%;
+                box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
+                transform: translate(150%, -50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
-            &::before{
-                display: none;
-            }
-            img{
-                width: 30px;
-                height: 30px;
+            .lined_dot_record {
+                position: relative;
+                width: 340px;
+                height: 2px;
+                background-color: #000;
+                @include drop_shadow_mobile_dot();
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: -300%;
+                    left: 100%;
+                    transform: translateX(-50%);
+                    width: 15px;
+                    height: 15px;
+                    background-color: #000;
+                    border-radius: 50%;
+                }
+                &::before {
+                    display: none;
+                }
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
             }
         }
-    }
         .record_form {
             margin-right: 10px;
             margin-left: 10px;
-        width: auto;
-        height: 370px;
-        background-color: rgb(255, 255, 255, 0.55);
-        border: 1px solid rgb(0, 0, 0, 0.48);
-        border-radius: 20px;
-        padding: 25px 20px;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        #contactForm {
+            width: auto;
+            height: 370px;
+            background-color: rgb(255, 255, 255, 0.55);
+            border: 1px solid rgb(0, 0, 0, 0.48);
+            border-radius: 20px;
+            padding: 25px 20px;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            #contactForm {
                 display: flex;
                 flex-direction: column;
-                
                 width: 290px;
                 align-items: center;
                 text-align: center;
                 flex-wrap: wrap;
-            } 
-        .record_form_text {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            text-align: center;
-            .record_form_txt {
-                @include font(500, 15px);
             }
-            .record_form_title {
-                margin-bottom: 15px;
-                @include font(700, 18px);
-                span {
-                    @include font(700, 18px);
-                }
-            }
-        }
-        .send_btn {
-            background-color: #000;
-            border: none;
-            width: 190px;
-            padding: 10px 50px;
-            border-radius: 50px;
-            color: $white;
-            @include font(500, 15px);
-            margin-left: 0;
-        }
-        .send_btn:hover {
-            border: 1px solid #000;
-            background-color: $white;
-            color: #000;
-            transition: 0.2s;
-        }
-        .record_form_inputs {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            align-items: center;
-            gap: 15px;
-            .main_input {
-                width: 300px;
-                height: 40px;
-                border-radius: 15px;
-                background-color: rgb(255, 255, 255, 0.55);
-                border: 1px solid rgb(0, 0, 0, 0.48);
-                padding: 7px 25px;
+            .record_form_text {
                 display: flex;
-                justify-content: space-between;
-                align-items: center;
-                .problem_input {
-                    background-color: none;
-                    background: none;
-                    border: none;
-                    width: 100%;
-                    @include font(300, 11px);
-                    &:focus {
-                        background: none;
-                        outline: rgb(0, 0, 0);
-                        height: 35px;
-                        @include font(300, 15px);
-                        transition: 1s;
-                    }
-                }
-                img {
-                    width: 25px;
-                    height: 25px;
-                    opacity: 0.48;
-                }
-            }
-            .information_inputs {
-                display: flex;
+                flex-direction: column;
                 flex-wrap: wrap;
-                justify-content: space-between;
-                gap: 15px;
-                margin-bottom: 15px;
-                .information_input {
-                    width: 140px;
-                    height: 40px;
-                    border-radius: 15px;
-                    background-color: rgb(255, 255, 255, 0.55);
-                    border: 1px solid rgb(0, 0, 0, 0.48);
-                    padding: 10px 30px;
-                    text-align: center;
-                    @include font(300, 12px);
-                    &:focus {
-                        outline: rgb(0, 0, 0);
-                        height: 40px;
-                        @include font(300, 12px);
-                        transition: 1s;
+                text-align: center;
+                .record_form_txt {
+                    @include font(500, 15px);
+                }
+                .record_form_title {
+                    margin-bottom: 15px;
+                    @include font(700, 18px);
+                    span {
+                        @include font(700, 18px);
                     }
                 }
-                .information_input:last-child {
+            }
+            .send_btn {
+                background-color: #000;
+                border: none;
+                width: 190px;
+                padding: 10px 50px;
+                border-radius: 50px;
+                color: $white;
+                @include font(500, 15px);
+                margin-left: 0;
+            }
+            .send_btn:hover {
+                border: 1px solid #000;
+                background-color: $white;
+                color: #000;
+                transition: 0.2s;
+            }
+            .record_form_inputs {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                gap: 15px;
+                .main_input {
                     width: 300px;
                     height: 40px;
                     border-radius: 15px;
                     background-color: rgb(255, 255, 255, 0.55);
                     border: 1px solid rgb(0, 0, 0, 0.48);
-                    padding: 10px 30px;
-                    text-align: center;
-                    @include font(300, 12px);
-                    &:focus {
+                    padding: 7px 25px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .problem_input {
                         background-color: none;
-                        outline: rgb(0, 0, 0);
+                        background: none;
+                        border: none;
+                        width: 100%;
+                        @include font(300, 11px);
+                        &:focus {
+                            background: none;
+                            outline: rgb(0, 0, 0);
+                            height: 35px;
+                            @include font(300, 15px);
+                            transition: 1s;
+                        }
+                    }
+                    img {
+                        width: 25px;
+                        height: 25px;
+                        opacity: 0.48;
+                    }
+                }
+                .information_inputs {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    gap: 15px;
+                    margin-bottom: 15px;
+                    .information_input {
+                        width: 140px;
                         height: 40px;
-                        @include font(300, 14px);
-                        transition: 1s;
+                        border-radius: 15px;
+                        background-color: rgb(255, 255, 255, 0.55);
+                        border: 1px solid rgb(0, 0, 0, 0.48);
+                        padding: 10px 30px;
+                        text-align: center;
+                        @include font(300, 12px);
+                        &:focus {
+                            outline: rgb(0, 0, 0);
+                            height: 40px;
+                            @include font(300, 12px);
+                            transition: 1s;
+                        }
+                    }
+                    .information_input:last-child {
+                        width: 300px;
+                        height: 40px;
+                        border-radius: 15px;
+                        background-color: rgb(255, 255, 255, 0.55);
+                        border: 1px solid rgb(0, 0, 0, 0.48);
+                        padding: 10px 30px;
+                        text-align: center;
+                        @include font(300, 12px);
+                        &:focus {
+                            background-color: none;
+                            outline: rgb(0, 0, 0);
+                            height: 40px;
+                            @include font(300, 14px);
+                            transition: 1s;
+                        }
+                    }
+                }
+            }
+        }
+        .record_form_sesuccess {
+            width: 355px;
+            height: auto;
+            background-color: rgb(0, 0, 0, 1);
+            border: 5px solid rgb(0, 0, 0, 0.48);
+            border-radius: 20px;
+            padding: 25px 20px;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+            .record_form_text {
+                color: $white;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                text-align: center;
+                gap: 10px;
+                .record_form_txt {
+                    @include font(400, 20px);
+                }
+            }
+            .success_logo {
+                margin-bottom: 20px;
+                width: 150px;
+                height: 150px;
+            }
+            .contacts {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 100%;
+                height: auto;
+                align-items: center;
+                justify-content: space-around;
+                .phone_contact {
+                    background-color: $white;
+                    border-radius: 15px;
+                    padding: 10px;
+                    @include font(400, 15px);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    height: auto;
+                    gap: 10px;
+                    width: auto;
+                    svg {
+                        width: 25px;
+                        height: 25px;
+                    }
+                    p {
+                        display: none;
+                    }
+                }
+                .phone_contact:hover {
+                    cursor: pointer;
+                    transition: 0.3s;
+                    border: 2px solid $white;
+                    color: $white;
+                    background-color: #000;
+                    svg path {
+                        stroke: $white;
+                    }
+                }
+                .social {
+                    width: auto;
+                    height: auto;
+                    background-color: $white;
+                    border-radius: 15px;
+                    padding: 10px;
+                    display: flex;
+                    svg {
+                        width: 25px;
+                        height: 25px;
+                    }
+                }
+                .social:hover {
+                    cursor: pointer;
+                    transition: 0.2s;
+                    border: 1px solid $white;
+                    background-color: #000;
+                    svg {
+                        fill: $white;
+                    }
+                    .telega_record {
+                        fill: $white;
                     }
                 }
             }
         }
     }
-        
-        .record_form_sesuccess {
-        width: 355px;
-        height: auto;
-        background-color: rgb(0, 0, 0, 1);
-        border: 5px solid rgb(0, 0, 0, 0.48);
-        border-radius: 20px;
-        padding: 25px 20px;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        text-align: center;
-        .record_form_text {
-            color: $white;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            text-align: center;
-            gap: 10px;
-            .record_form_txt {
-                @include font(400, 20px);
+    footer {
+        display: none;
+    }
+    
+    //СПРОБУВАТИ ПРИЛІПИТИ БЛОК ДО НИЗУ ALGIN ITEMS ТА ЗАДАТИ ЙОМУ САМОМУ БЛУР
+    .menu_mobile_service {
+        display: flex;
+    }
+    .menu_mobile_nav {
+        display: flex;
+        position: fixed;
+        bottom: env(safe-area-inset-bottom, 0px);
+        left: 0;
+        right: 0;
+        height: 100px;
+        max-width: 375px;
+        margin: 0 auto;
+        border-radius: 20px 20px 0 0;
+        background-color: rgb(255, 232, 232);
+        padding-top: 20px;
+        padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+        z-index: 1001;
+        box-shadow: inset 1px 0px 4px rgba(0, 0, 0, 0.1), 0px 4px 4px rgba(0, 0, 0, 0.4);
+        .menu_mobile_wraper_nav {
+            width: 100%;
+            overflow: hidden;
+            .menu_mobile_items_nav {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                #home {
+                    width: 75px;
+                    height: 50px;
+                    border-radius: 50px;
+                    display: flex;
+                    background-color: #000;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                }
+                .menu_mobile_item {
+                    width: 177px;
+                    height: auto;
+                    border: 2px solid $design_color;
+                    background-color: $white;
+                    border-radius: 50px;
+                    padding: 5px 20px;
+                    text-align: center;
+                    @include font(300, 15px);
+                    min-height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #back_consul {
+                    width: 75px;
+                    height: 50px;
+                    border-radius: 50px;
+                    display: flex;
+                    background-color: #000;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                    svg {
+                        transform: rotate(90deg);
+                    }
+                }
             }
         }
-        .success_logo {
-            margin-bottom: 20px;
-            width: 150px;
-            height: 150px;
+    }
+    .active_btn_consule_mobile {
+        display: flex;
+        position: fixed;
+        bottom: env(safe-area-inset-bottom, 0px);
+        left: 0;
+        right: 0;
+        height: 340px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-top: 20px;
+        padding-bottom: calc(460px + env(safe-area-inset-bottom, 0px));
+        z-index: 1001;
+        backdrop-filter: blur(2px);
+        .consul_inner_mobile {
+            width: 360px;
+            margin: 0 auto;
+            .consul_inner_mobile {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 10px;
+                .consul_inner_title_mobile {
+                    @include font(500, 20px);
+                    width: 200px;
+                    padding: 5px 30px 5px 30px;
+                    background-color: $black;
+                    border-radius: 50px;
+                    color: $white;
+                    text-align: center;
+                }
+                .consul_inner_info {
+                    background-color: $white;
+                    text-align: center;
+                    align-items: center;
+                    display: flex;
+                    gap: 10px;
+                    flex-direction: column;
+                    border-radius: 20px;
+                    padding: 13px 19px 13px 19px;
+                    .consul_inner_text_mobile {
+                        @include font(300, 15px);
+                        text-align: center;
+                    }
+                    .consul_inner_connect_info_mobile {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 10px;
+                        .go_to_form_btn_mobile {
+                            width: 260px;
+                            background-color: $black;
+                            color: $white;
+                            @include font(300, 15px);
+                            padding: 10px;
+                            border-radius: 20px;
+                            border: none;
+                        }
+                        .consul_inner_img_mobile {
+                            display: flex;
+                            border-radius: 50%;
+                            border: 1px solid $black;
+                            padding: 10px;
+                            background-color: $white;
+                            justify-content: center;
+                            width: 40px;
+                            height: 40px;
+                            //                            svg{
+                            //                                transform: translateY(5px);
+                            //                            }
+                        }
+                    }
+                }
+            }
         }
-        .contacts {
+    }
+    .active_btn_contact_mobile {
+        display: flex;
+        position: fixed;
+        bottom: env(safe-area-inset-bottom, 0px);
+        left: 0;
+        right: 0;
+        height: 320px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-top: 5px;
+        padding-bottom: calc(480px + env(safe-area-inset-bottom, 0px));
+        z-index: 1001;
+        backdrop-filter: blur(2px);
+        text-align: center;
+        justify-content: center;
+        .active_btn_contact_inner_mobile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            .contact_inner_mobile {
+                width: 100%;
+                height: auto;
+                background-color: $white;
+                border-radius: 20px;
+                display: flex;
+                padding: 10px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                .contact_location_img_mobile {
+                    border-radius: 10px;
+                    height: 250px;
+                    width: 340px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+            }
+            .contact_inner_title_mobile {
+                display: flex;
+                width: auto;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+                height: auto;
+                margin: 0;
+                @include font(500, 20px);
+                border-radius: 50px;
+                padding: 5px 30px;
+                color: $white;
+                background-color: $black;
+            }
+        }
+        .contacts_mobile {
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             width: 100%;
-            height: auto;
             align-items: center;
-            justify-content: space-around;
-            .phone_contact {
-                background-color: $white;
-                border-radius: 15px;
+            justify-content: center;
+            gap: 20px;
+            .phone_contact_mobile {
+                background-color: $black;
+                border-radius: 20px;
                 padding: 10px;
-                @include font(400, 15px);
+                @include font(500, 15px);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                text-align: center;
                 height: auto;
                 gap: 10px;
-                width: auto;
-                svg{
-                    width: 25px;
-                    height: 25px;
-                }
-                p{
-                    display: none;
-                }
-            }
-            .phone_contact:hover {
-                cursor: pointer;
-                transition: 0.3s;
-                border: 2px solid $white;
                 color: $white;
-                background-color: #000;
-                svg path {
-                    stroke: $white;
-                }
             }
-            .social {
-                width: auto;
-                height: auto;
-                background-color: $white;
-                border-radius: 15px;
+            .phone_contact_mobile a {
+                color: $white;
+                text-decoration: none;
+            }
+            .social_mobile {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
                 padding: 10px;
+                border: 1px solid $black;
                 display: flex;
-                svg{
+                align-items: center;
+                justify-content: center;
+                #location_mobile_contact {
                     width: 25px;
                     height: 25px;
-                }
-            }
-            .social:hover {
-                cursor: pointer;
-                transition: 0.2s;
-                border: 1px solid $white;
-                background-color: #000;
-                svg {
-                    fill: $white;
-                    
-                }
-                .telega_record {
-                    fill: $white;
                 }
             }
         }
     }
+    .active_btn_study_mobile {
+        display: flex;
+        position: fixed;
+        bottom: env(safe-area-inset-bottom, 0px);
+        left: 0;
+        right: 0;
+        height: 320px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-top: 5px;
+        padding-bottom: calc(500px + env(safe-area-inset-bottom, 0px));
+        z-index: 1001;
+        backdrop-filter: blur(2px);
+        text-align: center;
+        justify-content: center;
+        .study_action_inner_mobile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 360px;
+            margin: 0 auto;
+            .study_inner_title_mobile {
+                display: flex;
+                width: auto;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+                height: auto;
+                margin: 0;
+                @include font(500, 20px);
+                border-radius: 50px;
+                padding: 5px 30px;
+                color: $white;
+                background-color: #000;
+            }
+            .study_inner_mobile {
+                width: 100%;
+                height: auto;
+                background-color: $white;
+                border-radius: 20px;
+                display: flex;
+                padding: 10px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                .study_inner_text_mobile {
+                    align-items: center;
+                    width: 100%;
+                    height: auto;
+                    @include font(100, 18px);
+                    padding: 10px;
+                    background-color: $white;
+                    text-align: center;
+                    margin: 0;
+                }
+                .study_inner_connect_info_mobile {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: space-between;
+                    align-items: center;
+                    .go_to_form_btn {
+                        width: 260px;
+                        background-color: $black;
+                        color: $white;
+                        @include font(300, 15px);
+                        padding: 10px;
+                        border-radius: 20px;
+                        border: none;
+                    }
+                    .study_inner_img_mobile {
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        border: 1px solid $black;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        svg {
+                            width: 25px;
+                            height: 25px;
+                            transform: translateY(2px);
+                        }
+                    }
+                }
+            }
+        }
     }
-    
-    
-    footer{
-        display: none;
+    .active_btn_key_mobile {
+        display: flex;
+        position: fixed;
+        bottom: env(safe-area-inset-bottom, 0px);
+        left: 0;
+        right: 0;
+        height: 320px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-top: 5px;
+        padding-bottom: calc(530px + env(safe-area-inset-bottom, 0px));
+        z-index: 1001;
+        backdrop-filter: blur(2px);
+        text-align: center;
+        justify-content: center;
+        .key_more_slider_mobile {
+            width: 100%;
+            max-width: 375px;
+            //Основний клас слайдеру glide
+            .key_more_inner_mobile {
+                // Внутрішній клас слайдеру track
+                .key_more_slides_mobile {
+                    // Клас де розташовані слайди
+                    .key_more_slide_mobile {
+                        width: 100%;
+                        // Клас слайду
+                        .key_action_inner_mobile {
+                            width: 100%;
+                            height: 390px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+                            padding: 5px;
+                            .key_inner_title_mobile {
+                                display: flex;
+                                width: 100%;
+                                align-items: center;
+                                text-align: center;
+                                justify-content: center;
+                                height: auto;
+                                margin: 0;
+                                @include font(600, 20px);
+                                border-radius: 50px;
+                                padding: 10px 15px;
+                                color: $white;
+                                background-color: #000;
+                            }
+                            .key_inner_mobile {
+                                display: flex;
+                                flex-wrap: wrap;
+                                width: auto;
+                                align-items: center;
+                                text-align: center;
+                                background-color: $white;
+                                border-radius: 20px;
+                                padding: 5px;
+                                height: 390px;
+                                justify-content: space-between;
+                                .key_inner_text_mobile {
+                                    align-items: center;
+                                    width: 100%;
+                                    height: auto;
+                                    @include font(100, 20px);
+                                    padding: 15px 20px;
+                                    background-color: $white;
+                                    border-radius: 20px;
+                                    text-align: center;
+                                    margin: 0;
+                                }
+                                .key_inner_connect_info_mobile {
+                                    display: flex;
+                                    width: 100%;
+                                    align-items: center;
+                                    justify-content: center;
+                                    flex-direction: row;
+                                    gap: 30px;
+                                    .go_to_form_btn {
+                                        width: 260px;
+                                        background-color: $black;
+                                        color: $white;
+                                        @include font(300, 15px);
+                                        padding: 10px;
+                                        border-radius: 20px;
+                                        border: none;
+                                    }
+                                    .key_inner_img_mobile {
+                                        width: 45px;
+                                        height: 45px;
+                                        border-radius: 50%;
+                                        border: 1px solid $black;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        svg {
+                                            width: 25px;
+                                            height: 25px;
+                                            transform: translateY(2px);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .key_slider_mobile {
+                    width: 320px;
+                    height: 30px;
+                    position: relative;
+                    border-radius: 15px;
+                    background-color: rgb(255, 255, 255, 0.55);
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                    padding: 5px 10px;
+                    display: flex;
+                    margin-top: 40px;
+                    justify-content: space-between;
+                    align-items: center;
+                    span {
+                        display: inline-block;
+                        width: 60px;
+                        height: 15px;
+                        border-radius: 10px;
+                        background-color: #000;
+                        opacity: 0.4;
+                    }
+                    .glide__bullet--active {
+                        background-color: #000;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
     }
 }
