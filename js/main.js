@@ -264,13 +264,18 @@ BackBtnConsul.addEventListener('click', () => {
 navLinkOpenContact.addEventListener('click', () => {
     burgerMenu.classList.remove('active_burger');
     dropNav.classList.remove('active_drop_burger_links');
-    btnOpenedContact.classList.remove('hidden');
-    btnOpenedContact.classList.add('block');
-    HomeBtn.classList.add('hidden');
-    BackBtnConsul.classList.remove('hidden');
-    BackBtnConsul.classList.add('block');
-    glide_mobile.go('=2');
-    glide_mobile.update();
+    setTimeout(() => {
+            btnOpenedContact.classList.remove('hidden');
+            btnOpenedContact.classList.add('block');
+            HomeBtn.classList.add('hidden');
+            BackBtnConsul.classList.remove('hidden');
+            BackBtnConsul.classList.add('block');
+            btnOpenContact.classList.add('hidden');
+            glide_mobile.update();
+            glide_mobile.go('=2');
+        
+        }, 500);
+    
 });
 
 
@@ -447,34 +452,52 @@ window.addEventListener("scroll", () => {
         header.classList.remove("scrolled");
     }
 });
-// phone_macket
+
 document.addEventListener('DOMContentLoaded', () => {
     const phoneInput = document.querySelector('input[name="phone"]');
-    phoneInput.addEventListener('input', (e) => {
-        let numbers = phoneInput.value.replace(/\D/g, '');
-        if (numbers.startsWith('380')) {
-            numbers = numbers.slice(3); // видаляємо 380, бо воно буде вставлено вручну
-        }
-        numbers = numbers.slice(0, 9); // обмежуємо до 9 цифр після +380
-        let formatted = '+380';
-        if (numbers.length > 0) {
-            formatted += ` (${numbers.slice(0, 2)}`;
-        }
-        if (numbers.length >= 2) {
-            formatted += `) ${numbers.slice(2, 4)}`;
-        }
-        if (numbers.length >= 4) {
-            formatted += ` ${numbers.slice(4, 6)}`;
-        }
-        if (numbers.length >= 6) {
-            formatted += ` ${numbers.slice(6, 9)}`;
-        }
-        phoneInput.value = formatted;
+    const form = phoneInput.closest('form');
+
+    const PREFIX = '+380 ';
+    
+    // Встановлюємо префікс, якщо не встановлено
+    if (!phoneInput.value.startsWith(PREFIX)) {
+        phoneInput.value = "Номер телефону";
+    }
+
+    // Маска
+    phoneInput.addEventListener('input', () => {
+        let digits = phoneInput.value.replace(/\D/g, '');
+        if (digits.startsWith('380')) digits = digits.slice(3);
+        digits = digits.slice(0, 9);
+        phoneInput.value = PREFIX + digits;
     });
-    // Заборона введення нецифрових символів (крім керуючих)
+
+    // Заборона стирати префікс
+    phoneInput.addEventListener('keydown', (e) => {
+        if (phoneInput.selectionStart <= PREFIX.length && ['Backspace', 'Delete'].includes(e.key)) {
+            e.preventDefault();
+        }
+    });
+
+    // Заборона на нецифри
     phoneInput.addEventListener('keypress', (e) => {
         if (!/[0-9]/.test(e.key)) {
             e.preventDefault();
         }
     });
+
+    // Найнадійніше блокування submit
+    form.addEventListener('submit', (e) => {
+        const digits = phoneInput.value.slice(PREFIX.length).replace(/\D/g, '');
+
+        if (digits.length !== 9) {
+            e.preventDefault(); // Блокує стандартний сабміт
+            e.stopImmediatePropagation(); // Блокує всі інші сабміт-слухачі
+            console.warn('Форма НЕ відправлена. Неправильний номер телефону.');
+            alert('Будь ласка, введіть повний номер телефону (9 цифр після +380)');
+            return false;
+        }
+    });
 });
+
+

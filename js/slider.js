@@ -4,7 +4,7 @@ const glide = new Glide('.glide', {
   perView: 1,
   gap:20,
   focusAt:'center',
-  swipeThreshold:10,
+  swipeThreshold:100,
   animationDuration:1000,
 });
 glide.mount();

@@ -314,7 +314,7 @@ header {
             transition: 0.4s ease-in-out;
             transform: translateY(5px);
         }
-        #contact_burger_btn_mobile{
+        #contact_burger_btn_mobile {
             display: none;
         }
     }
@@ -1680,31 +1680,46 @@ footer {
                         @include font(700, 10px);
                     }
                     .burger_menu {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        height: 20px;
+                        width: 25px;
+                        cursor: pointer;
                         span {
+                            display: block;
                             height: 2px;
-                            width: 20px;
-                            border-radius: 10px;
+                            background: $black;
+                            border-radius: 20px;
+                            transition: 0.3s ease;
+                            transform-origin: center;
                         }
-                        span:nth-child(2) {
-                            height: 2px;
-                            width: 25px;
-                        }
-                        span:nth-child(3) {
-                            height: 2px;
-                            width: 15px;
-                        }
-                    }
-                    &.active_burger {
                         span:nth-child(1) {
-                            width: 25px;
-                            transform: rotate(45deg) translate(5px, 5px);
+                            width: 20px;
+                            align-self: flex-start;
                         }
                         span:nth-child(2) {
-                            opacity: 0;
+                            width: 25px;
+                            align-self: center;
                         }
                         span:nth-child(3) {
-                            transform: rotate(-45deg) translate(5px, -5px);
-                            width: 10px;
+                            width: 15px;
+                            align-self: flex-end;
+                        }
+                        &.active_burger {
+                            span:nth-child(1) {
+                                transform: rotate(45deg) translate(5px, 5px);
+                                width: 25px;
+                                align-self: center;
+                            }
+                            span:nth-child(2) {
+                                opacity: 0;
+                            }
+                            span:nth-child(3) {
+                                transform: rotate(-45deg) translate(8px, -8px);
+                                width: 25px;
+                                align-self: center;
+                            }
                         }
                     }
                 }
@@ -1734,13 +1749,13 @@ footer {
                 border-radius: 15px;
                 padding: 10px 30px 10px 30px;
             }
-            #about_us_scroll{
+            #about_us_scroll {
                 display: none;
             }
-            #contact_burger_btn{
+            #contact_burger_btn {
                 display: none;
             }
-            #contact_burger_btn_mobile{
+            #contact_burger_btn_mobile {
                 display: flex;
             }
         }
@@ -1938,6 +1953,7 @@ footer {
             justify-content: flex-end;
             align-items: flex-end;
             width: 100%;
+            overflow: hidden;
             .team_members {
                 width: 100%;
                 max-width: 260px;
@@ -2281,7 +2297,6 @@ footer {
     footer {
         display: none;
     }
-    
     //СПРОБУВАТИ ПРИЛІПИТИ БЛОК ДО НИЗУ ALGIN ITEMS ТА ЗАДАТИ ЙОМУ САМОМУ БЛУР
     .menu_mobile_service {
         display: flex;
@@ -2309,6 +2324,10 @@ footer {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                a{
+                        color:#000;
+                        text-decoration: none;
+                    }
                 #home {
                     width: 75px;
                     height: 50px;
