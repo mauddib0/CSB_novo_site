@@ -445,7 +445,7 @@ putValueConsul.addEventListener('click', () => {
 // fixed_header
 const header = document.getElementById("scrolled");
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 1000) {
         header.classList.add("scrolled");
     }
     else {

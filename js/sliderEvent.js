@@ -16,3 +16,5 @@ var glide = new Glide('.glide', {
 });
 
 glide.mount();
+
+window.addEventListener('load', () => glide.update());

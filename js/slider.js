@@ -6,6 +6,19 @@ const glide = new Glide('.glide', {
   focusAt:'center',
   swipeThreshold:100,
   animationDuration:1000,
+    breakpoints: {
+    768: {
+      perView: 2
+    },
+    767:{
+        perView:1,
+    },
+    425:{
+        perView: 1,
+        gap:10,
+    }
+  }
+    
 });
 glide.mount();
 
