@@ -800,41 +800,7 @@
         }
     }
 
-@media (max-width:1440px){
-    html,
-        body {
-            overflow-x: hidden;
-        }
-    .decor,
-        .decor1,
-        .decor2,
-        .decor3,
-        .decor4,
-        .decor5 {
-            display: none;
-        }
-        body {
-            background-color: $bgc_mobile;
-        }
-    .container {
-            width: 100%;
-            max-width: 1440px;
-            margin-top: 25px;
-            overflow: hidden;
-            height: auto;
-            align-items: center;
-        } 
-    h1{
-        margin-left: 15px;
-    }
-    h3{
-        margin-left: 15px;
-    }
-    .orenda_items{
-        width: 100%;
-        justify-content: center;
-    }
-}
+
 @media(max-width:1024px){
      html,
         body {
@@ -868,8 +834,9 @@
         margin-left: 10px;
         margin-bottom: 30px;
     }
-    h3{
-        display: none;
+     h3{
+        
+        margin-left: 10px;
     }
     .orenda_items{
         width: 100%;

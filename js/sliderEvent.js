@@ -9,6 +9,15 @@ var glide = new Glide('.glide', {
   rewind: false,
   bound: false,
   breakpoints: {
+      1024:{
+      gap:10 
+    },
+      768:{
+      gap:10 
+    },
+    425:{
+      perView:1  
+    },
     375: {
       perView: 1
     }

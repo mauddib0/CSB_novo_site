@@ -142,7 +142,7 @@ BackBtnConsul.addEventListener('click', () => {
 });
 document.addEventListener('click', function (e) {
     const isClickInsideMenu = e.target.closest('.menu_mobile_item');
-    const isClickOnToggler = e.target.closest('#fah_consul_open_more') || e.target.closest('#contact_open_more') || e.target.closest('#study_open_more') || e.target.closest('#back_consul') || e.target.closest('.glide__bullets') || e.target.closest('.glide__bullet') || e.target.closest('#home');
+    const isClickOnToggler = e.target.closest('#fah_consul_open_more') || e.target.closest('#contact_open_more') || e.target.closest('#study_open_more') || e.target.closest('#back_consul') || e.target.closest('.glide__bullets') || e.target.closest('.glide__bullet') || e.target.closest('.burger_menu') || e.target.closest('#home');
     // Якщо клік поза елементами меню та кнопками
     if (!isClickInsideMenu && !isClickOnToggler) {
         // Сховати все
@@ -154,8 +154,8 @@ document.addEventListener('click', function (e) {
         btnOpenedStudy.classList.remove('block');
         btnOpenedKey.classList.add('hidden');
         btnOpenedKey.classList.remove('block');
-        BackBtnConsul.classList.add('hidden');
-        BackBtnConsul.classList.remove('block');
+//        BackBtnConsul.classList.add('hidden');
+//        BackBtnConsul.classList.remove('block');
         btnOpenFah.classList.remove('hidden');
         btnOpenContact.classList.remove('hidden');
         btnOpenStudy.classList.remove('hidden');
