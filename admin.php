@@ -237,8 +237,8 @@ function renderSliderForm($tableName, $title, $data) {
         </label>
         <label>Тег
             <select name="tag" required>
-                <option value="подія" <?= (isset($data['tag']) && $data['tag'] === 'подія') ? 'selected' : '' ?>>Подія</option>
-                <option value="новина" <?= (isset($data['tag']) && $data['tag'] === 'новина') ? 'selected' : '' ?>>Новина</option>
+                <option value="Подія" <?= (isset($data['tag']) && $data['tag'] === 'подія') ? 'selected' : '' ?>>Подія</option>
+                <option value="Новина" <?= (isset($data['tag']) && $data['tag'] === 'новина') ? 'selected' : '' ?>>Новина</option>
             </select>
         </label>
         <label>Фото

@@ -417,8 +417,10 @@ a .home_link {
     }
     .main_event_about{
         @include font(300,30px);
-        span{
+        .google_link{
             text-decoration: underline;
+            color:$black;
+            cursor: pointer;
         }
     }
 }
